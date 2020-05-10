@@ -1,0 +1,13 @@
+.green-icon svg {
+  fill: rgba(94, 236, 75, 0.774);
+}
+.green-icon {
+  color: rgba(94, 236, 75, 0.774);
+}
+
+.red-icon svg {
+  fill: rgba(207, 52, 40, 0.87);
+}
+.red-icon {
+  color: rgba(207, 52, 40, 0.87);
+}
