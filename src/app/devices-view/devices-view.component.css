@@ -11,3 +11,28 @@
 .red-icon {
   color: rgba(207, 52, 40, 0.87);
 }
+
+.devices-list {
+  display: block;
+  width: 900px;
+}
+.devices-list table {
+  width: 100%;
+
+}
+.cdk-column-status {
+  width: 20px;
+  text-align: center;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.devices-list > .cdk-row {
+  height: 50px;
+}
+#add-new-controller {
+  float: right;
+  margin-right: 5px;
+}

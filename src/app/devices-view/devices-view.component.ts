@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DevicesService, DeviceInfo } from '../devices.service';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
+
 @Component({
   selector: 'app-devices-view',
   templateUrl: './devices-view.component.html',
@@ -20,6 +21,12 @@ export class DevicesViewComponent implements OnInit {
     );
     iconRegistry.addSvgIcon('disconnected',
       sanitizer.bypassSecurityTrustResourceUrl('assets/connect_off.svg')
+    );
+    iconRegistry.addSvgIcon('plus',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/plus.svg')
+    );
+    iconRegistry.addSvgIcon('update',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/update.svg')
     );
   }
 

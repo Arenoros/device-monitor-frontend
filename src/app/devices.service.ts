@@ -15,6 +15,11 @@ export class DeviceInfo {
     this.status = status;
   }
 }
+
+export class Status {
+  code: number;
+}
+
 const ELEMENT_DATA: DeviceInfo[] = [
   {id: 1, name: 'Hydrogen', host: '1.0079', status: true},
   {id: 2, name: 'Hydrogen', host: '1.0079', status: false},
@@ -31,6 +36,9 @@ export class DevicesService {
   ) { }
   listDevices(): Observable<DeviceInfo[]> {
     return this.http.get<DeviceInfo[]>('/api/devices', {responseType: 'json'});
-    //return ELEMENT_DATA;
+  }
+
+  imporFromGTable(): Observable<Status> {
+    return this.http.post<Status>('/api/devices/import', {responseType: 'json'});
   }
 }
