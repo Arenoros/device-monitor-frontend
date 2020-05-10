@@ -9,7 +9,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./devices-view.component.css']
 })
 export class DevicesViewComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'host', 'status'];
+  displayedColumns: string[] = ['name', 'host', 'login', 'password', 'state'];
   devices: DeviceInfo[];
   constructor(
     private iconRegistry: MatIconRegistry,
@@ -29,7 +29,17 @@ export class DevicesViewComponent implements OnInit {
       sanitizer.bypassSecurityTrustResourceUrl('assets/update.svg')
     );
   }
+  animal: string;
+  name: string;
 
+  onAdd(): void{
+
+  }
+  onUpdate(){
+    this.service.imporFromGTable().subscribe(status =>
+      console.log(status)
+    );
+  }
   ngOnInit(): void {
     this.service.listDevices().subscribe(response => {
       this.devices =  response.map(device => {
@@ -37,7 +47,9 @@ export class DevicesViewComponent implements OnInit {
           device.id,
           device.name,
           device.host,
-          device.status
+          device.login,
+          device.password,
+          device.state
         );
       });
     });

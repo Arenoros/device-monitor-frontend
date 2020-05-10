@@ -3,36 +3,65 @@
 }
 .green-icon {
   color: rgba(94, 236, 75, 0.774);
+  display: block;
+  margin: auto;
 }
 
 .red-icon svg {
   fill: rgba(207, 52, 40, 0.87);
+
 }
 .red-icon {
   color: rgba(207, 52, 40, 0.87);
-}
-
-.devices-list {
+  text-align: center;
   display: block;
-  width: 900px;
+  margin: auto;
 }
-.devices-list table {
+
+.gray-icon {
+  color: rgb(85, 85, 85);
+  display: block;
+  margin: auto;
+}
+
+.gray-icon svg {
+  fill: rgb(85, 85, 85);
+}
+
+#devices-list {
+  display: block;
+  width: 800px;
+}
+#devices-list > table {
   width: 100%;
-
 }
-.cdk-column-status {
-  width: 20px;
-  text-align: center;
+#devices-list .mat-header-row {
+  height: 40px;
 }
 
-.center-text {
-  text-align: center;
-}
-
-.devices-list > .cdk-row {
+#devices-list .mat-toolbar-single-row {
+  padding-left: 24px;
+  padding-right: 24px;
   height: 50px;
 }
-#add-new-controller {
+#devices-list .mat-header-cell {
+  text-align: center;
+}
+#devices-list .mat-cell {
+  text-align: center;
+}
+#devices-list .mat-column-name {
+  text-align: left;
+}
+.mat-column-state {
+  width: 50px;
+}
+/* .cdk-column-status {
+  width: 20px;
+  text-align: center;
   float: right;
-  margin-right: 5px;
+} */
+
+#devices-list .cdk-row {
+  height: 50px;
 }

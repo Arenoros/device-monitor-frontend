@@ -3,16 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export class DeviceInfo {
-  status: boolean;
   id: number;
   name: string;
   host: string;
+  login: string;
+  password: string;
+  state: boolean;
 
-  constructor(id: number, name: string, host: string, status: boolean) {
+  constructor(id: number, name: string, host: string, login: string, password: string, state: boolean) {
     this.id = id;
     this.name = name;
     this.host = host;
-    this.status = status;
+    this.login = login;
+    this.password = password;
+    this.state = state;
   }
 }
 
@@ -20,12 +24,6 @@ export class Status {
   code: number;
 }
 
-const ELEMENT_DATA: DeviceInfo[] = [
-  {id: 1, name: 'Hydrogen', host: '1.0079', status: true},
-  {id: 2, name: 'Hydrogen', host: '1.0079', status: false},
-  {id: 3, name: 'Hydrogen', host: '1.0079', status: false},
-  {id: 4, name: 'Hydrogen', host: '1.0079', status: true},
-];
 @Injectable({
   providedIn: 'root'
 })
