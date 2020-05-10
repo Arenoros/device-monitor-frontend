@@ -15,3 +15,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 12px;
   color: rgba(255,255,255,.7);
 }
+#add-device-id {
+  padding: 0;
+  margin: 0 auto;
+  box-shadow: 0px 5px 10px -7px rgba(0, 0, 0, 0.2),
+    0px 10px 15px 3px rgba(0, 0, 0, 0.14),
+    0px 15px 20px 8px rgba(0, 0, 0, 0.12);
+}
+#add-device-id .mat-card {
+  margin: 0 auto;
+}
