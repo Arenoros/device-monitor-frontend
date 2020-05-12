@@ -65,3 +65,7 @@
 #devices-list .cdk-row {
   height: 50px;
 }
+
+#devices-list .menu-button {
+  background-color: #424242;
+}

@@ -4,15 +4,15 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import {AddDeviceComponent } from '../add-device/add-device.component';
-import { from } from 'rxjs';
-
+import { Observable, from } from 'rxjs';
+import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-devices-view',
   templateUrl: './devices-view.component.html',
   styleUrls: ['./devices-view.component.css']
 })
 export class DevicesViewComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'host', 'login', 'password', 'state'];
+  displayedColumns: string[] = ['name', 'ip', 'login', 'password', 'state'];
   devices: DeviceInfo[];
   constructor(
     private iconRegistry: MatIconRegistry,
@@ -33,37 +33,36 @@ export class DevicesViewComponent implements OnInit {
       sanitizer.bypassSecurityTrustResourceUrl('assets/update.svg')
     );
   }
-  animal: string;
-  name: string;
-
   onAdd(): void {
     const dialogRef = this.dialog.open(AddDeviceComponent, {
-      id: 'add-device-id',
-      data: {name: this.name, animal: this.animal}
+      id: 'add-device-id'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
     });
   }
-  onUpdate(){
-    this.service.imporFromGTable().subscribe(status =>
-      console.log(status)
-    );
+  onImport(){
+    this.service.imporFromGTable().subscribe(status => {
+      console.log(JSON.stringify(status));
+    });
   }
-  ngOnInit(): void {
-    this.service.listDevices().subscribe(response => {
-      this.devices =  response.map(device => {
-        return new DeviceInfo(
-          device.id,
-          device.name,
-          device.host,
-          device.login,
-          device.password,
-          device.state
-        );
+  onUpdateState(){
+    this.service.updateState().subscribe(status => {
+      status.map( (value, pos) => { this.devices[pos].state = value; });
+      console.log(status);
+    });
+  }
+  loadDevices() {
+    this.service.getDevices().subscribe(data => {
+      this.devices = [];
+      data.forEach((row) => {
+        row[1].id = row[0];
+        this.devices.push(row[1]);
       });
     });
+  }
+  ngOnInit(): void {
+    this.loadDevices();
   }
 }

@@ -6,15 +6,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
      Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
 }
-.mat-header-cell {
+/* .mat-header-cell {
   font-size: 14px;
   font-weight: 500;
   color: rgba(255,255,255,.9);
-}
-.mat-cell {
+} */
+/* .mat-cell {
   font-size: 12px;
   color: rgba(255,255,255,.7);
-}
+} */
 #add-device-id {
   padding: 0;
   margin: 0 auto;
