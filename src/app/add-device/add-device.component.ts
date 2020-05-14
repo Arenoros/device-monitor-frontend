@@ -26,7 +26,9 @@ export class AddDeviceComponent {
     private service: DevicesService,
   ) {}
 
-  onSubmit() {
-    this.service.addDevice(this.controllerForm.value);
+  onAdd() {
+    this.service.addDevice(this.controllerForm.value).subscribe(status => {
+      console.log(JSON.stringify(status));
+    });
   }
 }

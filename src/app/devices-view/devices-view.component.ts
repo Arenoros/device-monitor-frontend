@@ -37,10 +37,6 @@ export class DevicesViewComponent implements OnInit {
     const dialogRef = this.dialog.open(AddDeviceComponent, {
       id: 'add-device-id'
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
   onImport(){
     this.service.imporFromGTable().subscribe(status => {
