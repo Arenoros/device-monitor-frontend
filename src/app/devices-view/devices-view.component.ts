@@ -12,7 +12,7 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./devices-view.component.css']
 })
 export class DevicesViewComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'ip', 'login', 'password', 'state'];
+  displayedColumns: string[] = ['name', 'platform', 'login', 'password', 'protocol'];
   devices: DeviceInfo[];
   constructor(
     private iconRegistry: MatIconRegistry,

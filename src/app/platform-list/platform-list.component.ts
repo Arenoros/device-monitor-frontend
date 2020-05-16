@@ -14,7 +14,7 @@ import {map} from 'rxjs/operators';
 })
 export class PlatformListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'os', 'arch', 'compiler'];
+  displayedColumns: string[] = ['name', 'os', 'arch', 'compiler', 'target'];
   platforms = [];
   constructor(
     private sanitizer: DomSanitizer,
