@@ -25,3 +25,35 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 #add-device-id .mat-card {
   margin: 0 auto;
 }
+.mat-table {
+  width: 100%;
+}
+.green-icon svg {
+  fill: rgba(94, 236, 75, 0.774);
+}
+.green-icon {
+  color: rgba(94, 236, 75, 0.774);
+  display: block;
+  margin: auto;
+}
+
+.red-icon svg {
+  fill: rgba(207, 52, 40, 0.87);
+
+}
+.red-icon {
+  color: rgba(207, 52, 40, 0.87);
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.gray-icon {
+  color: rgb(85, 85, 85);
+  display: block;
+  margin: auto;
+}
+
+.gray-icon svg {
+  fill: rgb(85, 85, 85);
+}

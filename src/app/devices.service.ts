@@ -20,7 +20,10 @@ export class DeviceInfo {
     this.state = state;
   }
 }
-
+export class Responce {
+  code: number;
+  data: any;
+}
 export class Status {
   code: number;
 }
@@ -48,5 +51,8 @@ export class DevicesService {
 
   getDevices() {
     return this.http.get<any[]>('/api/devices');
+  }
+  getPlatforms(){
+    return this.http.get<Responce>('/api/platforms');
   }
 }
