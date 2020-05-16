@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="controllerForm" novalidate (ngSubmit)="onSubmit()">
+  <form [formGroup]="controllerForm" novalidate (ngSubmit)="onAdd()">
     <mat-card class="add-controller-card">
       <mat-card-content>
         <div class="row">
@@ -58,7 +58,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Submit</button>
+        <button mat-raised-button color="primary" type="submit" (click)="onAdd()">Submit</button>
       </mat-card-actions>
     </mat-card>
   </form>

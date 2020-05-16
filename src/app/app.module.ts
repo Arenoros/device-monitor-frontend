@@ -26,20 +26,30 @@ import { DevicesViewComponent } from './devices-view/devices-view.component';
 import { AddDeviceComponent } from './add-device/add-device.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { PlatformListComponent } from './platform-list/platform-list.component';
+import { InstalledControllersComponent } from './installed-controllers/installed-controllers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     DevicesViewComponent,
-    AddDeviceComponent
+    AddDeviceComponent,
+    PlatformListComponent,
+    InstalledControllersComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: DevicesViewComponent }
+      { path: '', component: DevicesViewComponent },
+      { path: 'devices', component: DevicesViewComponent },
+      { path: 'platforms', component: PlatformListComponent },
+      { path: 'installed', component: InstalledControllersComponent }
     ]),
     NgbModule,
     NgbPaginationModule,
@@ -58,7 +68,10 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule,
     MatSelectModule,
     MatRadioModule,
-    MatCardModule
+    MatCardModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
