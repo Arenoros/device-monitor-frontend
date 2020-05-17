@@ -1,54 +1,25 @@
-<div id="devices-list" class="mat-elevation-z8">
-  <mat-toolbar  color="primary" class="center-text">
-    <mat-menu #appMenu="matMenu">
-      <button mat-menu-item (click)="onImport()" >Google Table</button>
-      <button mat-menu-item>Help</button>
-    </mat-menu>
-    <button mat-button [matMenuTriggerFor]="appMenu">
-      Import
-    </button>
-    <span class="fill-remaining-space"></span>
-    <button mat-icon-button color="accent" (click)="onUpdateState()">
-      <mat-icon svgIcon="update" class="grey-icon"></mat-icon>
-    </button>
-    <button mat-icon-button color="accent" (click)="onAdd()">
-      <mat-icon svgIcon="plus" class="grey-icon "></mat-icon>
-    </button>
-  </mat-toolbar>
-  <table mat-table [dataSource]="devices">
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+<div class="mat-elevation-z8">
+  <div class="table">
+    <div class="header-row">
+      <ng-container *ngFor="let h of displayedColumns; let i=index">
+        <div class="col">
+          {{h}}
+        </div>
+      </ng-container>
+    </div>
+    <ng-container *ngFor="let row of data">
+      <div class="row">
+        <ng-container *ngFor="let cell of row">
+          <div class="col">
+            {{cell}}
+          </div>
+        </ng-container>
+      </div>
     </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="ip">
-      <th mat-header-cell *matHeaderCellDef> IP </th>
-      <td mat-cell *matCellDef="let element"> {{element.ip}} </td>
-    </ng-container>
-    <!-- Weight Column -->
-    <ng-container matColumnDef="login">
-      <th mat-header-cell *matHeaderCellDef> Login </th>
-      <td mat-cell *matCellDef="let element"> {{element.login}} </td>
-    </ng-container>
-     <!-- Weight Column -->
-     <ng-container matColumnDef="password">
-      <th mat-header-cell *matHeaderCellDef> Password </th>
-      <td mat-cell *matCellDef="let element"> {{element.password}} </td>
-    </ng-container>
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="state">
-      <th mat-header-cell *matHeaderCellDef> State </th>
-      <td mat-cell *matCellDef="let element">
-        <!-- {{element.state}} -->
-        <mat-icon *ngIf="element.state == false" svgIcon="disconnected" class="red-icon" aria-hidden="false" >
-        </mat-icon>
-        <mat-icon *ngIf="element.state" svgIcon="connected" class="green-icon" aria-hidden="false">
-        </mat-icon>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  </div>
+</div>
+<div class="example-button-container">
+  <button mat-fab color="warn" (click)="onAdd()">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>

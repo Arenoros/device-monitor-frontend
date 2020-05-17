@@ -12,20 +12,14 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./devices-view.component.css']
 })
 export class DevicesViewComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'platform', 'login', 'password', 'protocol'];
-  devices: DeviceInfo[];
+  displayedColumns: string[] = ['Name', 'Platform', 'Login', 'Password', 'Protocol'];
+  data: any[];
   constructor(
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private service: DevicesService,
     public dialog: MatDialog,
   ) {
-    iconRegistry.addSvgIcon('connected',
-        sanitizer.bypassSecurityTrustResourceUrl('assets/connect_on.svg')
-    );
-    iconRegistry.addSvgIcon('disconnected',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/connect_off.svg')
-    );
     iconRegistry.addSvgIcon('plus',
       sanitizer.bypassSecurityTrustResourceUrl('assets/plus.svg')
     );
@@ -45,20 +39,21 @@ export class DevicesViewComponent implements OnInit {
   }
   onUpdateState(){
     this.service.updateState().subscribe(status => {
-      status.map( (value, pos) => { this.devices[pos].state = value; });
+      //status.map( (value, pos) => { this.data[pos][pos] = value; });
       console.log(status);
     });
   }
   loadDevices() {
     this.service.getDevices().subscribe(data => {
-      this.devices = [];
-      data.forEach((row) => {
-        row[1].id = row[0];
-        this.devices.push(row[1]);
-      });
+      //this.data = [];
+      // data.forEach((row) => {
+      //   row[1].id = row[0];
+      //   this.data.push(row[1]);
+      // });
     });
   }
   ngOnInit(): void {
-    this.loadDevices();
+    this.data = [['Example', 'Linux', 'root', '123', 'SSH'], ['Example', 'Linux', 'root', '123', 'SSH']];
+    //this.loadDevices();
   }
 }

@@ -19,6 +19,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 
@@ -31,6 +34,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { PlatformListComponent } from './platform-list/platform-list.component';
 import { InstalledControllersComponent } from './installed-controllers/installed-controllers.component';
+import { AddMonitoringComponent } from './add-monitoring/add-monitoring.component';
 
 @NgModule({
   declarations: [
@@ -40,13 +44,14 @@ import { InstalledControllersComponent } from './installed-controllers/installed
     AddDeviceComponent,
     PlatformListComponent,
     InstalledControllersComponent,
+    AddMonitoringComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: DevicesViewComponent },
+      { path: '', component: InstalledControllersComponent },
       { path: 'devices', component: DevicesViewComponent },
       { path: 'platforms', component: PlatformListComponent },
       { path: 'installed', component: InstalledControllersComponent }
@@ -71,9 +76,10 @@ import { InstalledControllersComponent } from './installed-controllers/installed
     MatCardModule,
     LayoutModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatStepperModule
   ],
-  providers: [],
+  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

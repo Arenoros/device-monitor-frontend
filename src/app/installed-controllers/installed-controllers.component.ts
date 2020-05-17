@@ -3,7 +3,7 @@ import { DevicesService, DeviceInfo } from '../devices.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
-import {AddDeviceComponent } from '../add-device/add-device.component';
+import { AddMonitoringComponent } from '../add-monitoring/add-monitoring.component';
 import { Observable, from } from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -14,8 +14,8 @@ import {map} from 'rxjs/operators';
 })
 export class InstalledControllersComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'ip', 'login', 'password', 'state'];
-  devices: DeviceInfo[];
+  displayedColumns: string[] = ['Device', 'IP', 'Login', 'State'];
+  data: [any[]];
   constructor(
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
@@ -28,15 +28,9 @@ export class InstalledControllersComponent implements OnInit {
     iconRegistry.addSvgIcon('disconnected',
       sanitizer.bypassSecurityTrustResourceUrl('assets/connect_off.svg')
     );
-    iconRegistry.addSvgIcon('plus',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/plus.svg')
-    );
-    iconRegistry.addSvgIcon('update',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/update.svg')
-    );
   }
   onAdd(): void {
-    const dialogRef = this.dialog.open(AddDeviceComponent, {
+    const dialogRef = this.dialog.open(AddMonitoringComponent, {
       id: 'add-device-id'
     });
   }
@@ -46,18 +40,17 @@ export class InstalledControllersComponent implements OnInit {
     });
   }
   onUpdateState(){
-    this.service.updateState().subscribe(status => {
-      status.map( (value, pos) => { this.devices[pos].state = value; });
-      console.log(status);
+    this.service.updateState().subscribe(responce => {
+      if (responce.status.code) {
+        console.log(responce);
+        return;
+      }
+      responce.data.map( (value, pos) => { this.data[pos][3] = value; });
     });
   }
   loadDevices() {
-    this.service.getDevices().subscribe(data => {
-      this.devices = [];
-      data.forEach((row) => {
-        row[1].id = row[0];
-        this.devices.push(row[1]);
-      });
+    this.service.getDevices().subscribe(responce => {
+      this.data = responce.data;
     });
   }
   ngOnInit(): void {

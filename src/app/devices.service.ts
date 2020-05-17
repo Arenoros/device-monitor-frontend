@@ -20,12 +20,12 @@ export class DeviceInfo {
     this.state = state;
   }
 }
-export class Responce {
-  code: number;
-  data: any;
-}
 export class Status {
   code: number;
+}
+export class Responce {
+  status: Status;
+  data: any;
 }
 
 @Injectable({
@@ -39,18 +39,18 @@ export class DevicesService {
     return this.http.get('/api/devices');
   }
 
-  imporFromGTable(): Observable<Status> {
-    return this.http.post<Status>('/api/devices/import', {});
+  imporFromGTable() {
+    return this.http.post<Responce>('/api/devices/import', {});
   }
-  addDevice(device: DeviceInfo): Observable<Status> {
-    return this.http.post<Status>('/api/devices', device);
+  addDevice(device: DeviceInfo){
+    return this.http.post<Responce>('/api/devices', device);
   }
-  updateState(): Observable<boolean[]> {
-    return this.http.get<boolean[]>('/api/devices/update_state');
+  updateState() {
+    return this.http.get<Responce>('/api/devices/update_state');
   }
 
   getDevices() {
-    return this.http.get<any[]>('/api/devices');
+    return this.http.get<Responce>('/api/devices');
   }
   getPlatforms(){
     return this.http.get<Responce>('/api/platforms');
