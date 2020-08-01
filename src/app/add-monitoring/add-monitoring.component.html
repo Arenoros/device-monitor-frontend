@@ -1,7 +1,7 @@
 <div>
   <mat-vertical-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+    <mat-step [stepControl]="hostForm">
+      <form [formGroup]="hostForm">
         <ng-template matStepLabel>Fill out your name</ng-template>
         <mat-form-field>
           <mat-label>Name</mat-label>
@@ -12,8 +12,20 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="deviceForm">
+      <form [formGroup]="deviceForm">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="platformForm">
+      <form [formGroup]="platformForm">
         <ng-template matStepLabel>Fill out your address</ng-template>
         <mat-form-field>
           <mat-label>Address</mat-label>

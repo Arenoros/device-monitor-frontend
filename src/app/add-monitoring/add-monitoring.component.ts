@@ -8,16 +8,20 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class AddMonitoringComponent implements OnInit {
   isLinear = true;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  constructor(private _formBuilder: FormBuilder) { }
+  hostForm: FormGroup;
+  deviceForm: FormGroup;
+  platformForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+    this.hostForm = this.formBuilder.group({
+      ip: ['', Validators.required]
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+    this.deviceForm = this.formBuilder.group({
+      //secondCtrl: ['', Validators.required]
+    });
+    this.platformForm = this.formBuilder.group({
+      //secondCtrl: ['', Validators.required]
     });
   }
 
